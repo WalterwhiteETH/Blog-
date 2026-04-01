@@ -1,0 +1,1780 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 17 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R 22 0 R 24 0 R 26 0 R 28 0 R 30 0 R 32 0 R 34 0 R 36 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 2366 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(MUSIC PLATFORM DOCUMENTATION) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(1. PROJECT OVERVIEW) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Music Platform is a local development workspace that combines:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- A FastAPI backend for device registration, subscription rules, marketplace flows,) Tj
+0 -14 Td
+(  holiday-aware recommendations, Ethiopian calendar conversion, and audio analysis.) Tj
+0 -14 Td
+(- A Feishin-based React frontend for the user experience, playback shell, routing, device-) Tj
+0 -14 Td
+(  aware UI behavior, and future integration with marketplace, payments, and recommendation) Tj
+0 -14 Td
+(  flows.) Tj
+0 -14 Td
+(- Local infrastructure for Navidrome, Postgres, and backend containers via Docker Compose.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Current local URLs:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- Frontend web UI: `http://localhost:5173`) Tj
+0 -14 Td
+(- Backend API: `http://localhost:8000`) Tj
+0 -14 Td
+(- Backend Swagger docs: `http://localhost:8000/docs`) Tj
+0 -14 Td
+(- Backend health check: `http://localhost:8000/health`) Tj
+0 -14 Td
+(- Navidrome: `http://localhost:4533`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(2. REPOSITORY LAYOUT) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Main folders:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `backend/`: Python backend and tests) Tj
+0 -14 Td
+(- `backend/app/`: canonical FastAPI application) Tj
+0 -14 Td
+(- `backend/app/api/routers/`: route definitions) Tj
+0 -14 Td
+(- `backend/app/services/`: backend business logic) Tj
+0 -14 Td
+(- `backend/app/core/`: settings and recommendation catalogs) Tj
+0 -14 Td
+(- `backend/app/models.py`: SQLAlchemy models) Tj
+0 -14 Td
+(- `backend/app/schemas.py`: Pydantic request and response schemas) Tj
+0 -14 Td
+(- `feishin/`: frontend application and web build tooling) Tj
+0 -14 Td
+(- `feishin/src/renderer/`: canonical frontend app code) Tj
+0 -14 Td
+(- `docs/`: project documentation and exported PDF files) Tj
+0 -14 Td
+(- `docker-compose.yml`: local infrastructure orchestration) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Runtime-only folders intentionally excluded from Git:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `postgres-data/`) Tj
+0 -14 Td
+(- `navidrome-data/`) Tj
+0 -14 Td
+(- `music/`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(3. ARCHITECTURE SUMMARY) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Backend architecture) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(The backend runs as a FastAPI app defined in `backend/app/main.py`. It registers routers) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 1958 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(  for core platform logic, marketplace, payments, calendar conversion, recommendations,) Tj
+0 -14 Td
+(  holiday administration, and audio analysis.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(The database layer is defined in `backend/app/db.py` and uses SQLAlchemy. The app) Tj
+0 -14 Td
+(  supports:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- SQLite for local fallback development) Tj
+0 -14 Td
+(- Postgres when `DATABASE_URL` is provided, including in Docker) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(On startup, the backend creates tables automatically through SQLAlchemy metadata.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Frontend architecture) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(The frontend is a React application bootstrapped from `feishin/src/renderer/main.tsx`.) Tj
+0 -14 Td
+(  It uses:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- React) Tj
+0 -14 Td
+(- Mantine UI) Tj
+0 -14 Td
+(- TanStack React Query with IndexedDB persistence) Tj
+0 -14 Td
+(- A Feishin renderer architecture) Tj
+0 -14 Td
+(- MemoryRouter-based in-app routing) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(The app shell in `feishin/src/renderer/app.tsx` initializes:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- theme and notifications) Tj
+0 -14 Td
+(- player providers and audio layers) Tj
+0 -14 Td
+(- settings synchronization) Tj
+0 -14 Td
+(- Telegram Mini App behavior) Tj
+0 -14 Td
+(- device registration with the backend) Tj
+0 -14 Td
+(- bitrate policy selection based on backend device classification) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Infrastructure) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`docker-compose.yml` defines three services:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `postgres`) Tj
+0 -14 Td
+(- `navidrome`) Tj
+0 -14 Td
+(- `backend`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(The frontend is started separately through Vite from the `feishin` directory.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4. BACKEND DOCUMENTATION) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4.1 Runtime model) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Backend startup entrypoints:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `backend/main.py`: compatibility entrypoint) Tj
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 1582 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(- `backend/app/main.py`: canonical application) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Configuration comes from `backend/app/core/settings.py`. Important settings include:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `APP_ENV`) Tj
+0 -14 Td
+(- `APP_TITLE`) Tj
+0 -14 Td
+(- `APP_VERSION`) Tj
+0 -14 Td
+(- `ADMIN_API_KEY`) Tj
+0 -14 Td
+(- `DATABASE_URL`) Tj
+0 -14 Td
+(- `DATABASE_ECHO`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Default local behavior:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `DATABASE_URL` defaults to `sqlite:///./music_platform.db`) Tj
+0 -14 Td
+(- This means the backend can run locally without Docker if needed) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Docker behavior:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- Docker Compose passes a Postgres `DATABASE_URL`) Tj
+0 -14 Td
+(- Backend container exposes port `8000`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4.2 Core routes) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`GET /`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- basic service sanity check) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Returns:) Tj
+0 -14 Td
+(- running message) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`GET /health`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- health endpoint for local verification and monitoring) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Returns:) Tj
+0 -14 Td
+(- `{"status":"ok"}`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`POST /register-device`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- create a user/device record and classify the device capability) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Request body:) Tj
+0 -14 Td
+(- `user_agent: string`) Tj
+0 -14 Td
+(- `telegram: boolean = false`) Tj
+0 -14 Td
+(- `telegram_id: string | null`) Tj
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 1522 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(- `email: string | null`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- `user_id: int`) Tj
+0 -14 Td
+(- `device_class: "lite" | "standard" | "high"`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Business rules:) Tj
+0 -14 Td
+(- device class is inferred from `user_agent`) Tj
+0 -14 Td
+(- Telegram detection uses request payload plus request headers) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`GET /can-play/{song_id}/{user_id}`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- determine if a user may play a premium song) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- `allowed: boolean`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Behavior:) Tj
+0 -14 Td
+(- non-premium songs are always allowed) Tj
+0 -14 Td
+(- premium songs require an active subscription) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`GET /premium-songs`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- list premium Navidrome song ids) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- list of string song ids) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`GET /stream-policy/{user_id}`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- return the bitrate policy for a user based on device class) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- `device_class`) Tj
+0 -14 Td
+(- `maxBitrate`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Bitrate policy:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `lite`: `96`) Tj
+0 -14 Td
+(- `standard`: `192`) Tj
+0 -14 Td
+(- `high`: `320`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4.3 Marketplace routes) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Routes are registered under `/marketplace`.) Tj
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 1514 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+() Tj
+0 -14 Td
+(`POST /marketplace/sell-playlist`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- create a public or private marketplace listing for a playlist) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Request body:) Tj
+0 -14 Td
+(- `playlist_id: string`) Tj
+0 -14 Td
+(- `seller_id: int`) Tj
+0 -14 Td
+(- `price: float > 0`) Tj
+0 -14 Td
+(- `currency: string = "ETB"`) Tj
+0 -14 Td
+(- `is_public: boolean = true`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- marketplace listing record) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`GET /marketplace`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- list public marketplace entries) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- list of marketplace records) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`POST /marketplace/buy-playlist`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- record a purchase for a public playlist listing) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Request body:) Tj
+0 -14 Td
+(- `playlist_id: string`) Tj
+0 -14 Td
+(- `buyer_id: int`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- `playlist_id`) Tj
+0 -14 Td
+(- `buyer_id`) Tj
+0 -14 Td
+(- `sales_count`) Tj
+0 -14 Td
+(- `purchased: true`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Behavior:) Tj
+0 -14 Td
+(- validates buyer existence) Tj
+0 -14 Td
+(- validates public listing existence) Tj
+0 -14 Td
+(- creates purchase record) Tj
+0 -14 Td
+(- increments `sales_count`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4.4 Payment and subscription routes) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Routes are registered under `/payment`.) Tj
+ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 1452 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+() Tj
+0 -14 Td
+(`POST /payment/create`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- create a pending payment row for a user) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Request body:) Tj
+0 -14 Td
+(- `user_id: int`) Tj
+0 -14 Td
+(- `amount: float > 0`) Tj
+0 -14 Td
+(- `method: "telebirr" | "cbe"`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- payment record) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`POST /payment/confirm`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- confirm a payment and activate a 30-day subscription) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Request body:) Tj
+0 -14 Td
+(- `payment_id: int`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- `payment_id`) Tj
+0 -14 Td
+(- `status`) Tj
+0 -14 Td
+(- `subscription_status`) Tj
+0 -14 Td
+(- `expires_at`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Behavior:) Tj
+0 -14 Td
+(- marks payment as confirmed) Tj
+0 -14 Td
+(- creates or updates a subscription) Tj
+0 -14 Td
+(- extends subscription expiration by 30 days from current time) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4.5 Calendar routes) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Routes are registered under `/calendar`.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`GET /calendar/ethiopian-now`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- convert the current UTC date into Ethiopian calendar format) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- `year`) Tj
+0 -14 Td
+(- `month`) Tj
+0 -14 Td
+(- `day`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`POST /calendar/to-ethiopian`) Tj
+ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 1508 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- convert a Gregorian date into Ethiopian date) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Request body:) Tj
+0 -14 Td
+(- `year`) Tj
+0 -14 Td
+(- `month`) Tj
+0 -14 Td
+(- `day`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`POST /calendar/to-gregorian`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- convert an Ethiopian date into Gregorian date) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Request body:) Tj
+0 -14 Td
+(- `year`) Tj
+0 -14 Td
+(- `month`) Tj
+0 -14 Td
+(- `day`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Implementation notes:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- conversion uses Julian Day Number math) Tj
+0 -14 Td
+(- invalid month/day combinations return HTTP 400) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4.6 Recommendation routes) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Routes are registered under `/recommendations`.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`GET /recommendations/playlists`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- return playlist recommendations based on date and Ethiopian holiday rules) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Query params:) Tj
+0 -14 Td
+(- `date` optional, format `YYYY-MM-DD`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- `date`) Tj
+0 -14 Td
+(- `holiday`) Tj
+0 -14 Td
+(- `recommendations`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Behavior:) Tj
+0 -14 Td
+(- checks built-in holiday rules plus active DB rules) Tj
+0 -14 Td
+(- falls back to default recommendations when no holiday matches) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`GET /recommendations/hybrid-feed`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+ET
+endstream
+endobj
+18 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 19 0 R >>
+endobj
+19 0 obj
+<< /Length 1454 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(- return ranked songs from a static catalog with holiday-aware recommendation logic) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Query params:) Tj
+0 -14 Td
+(- `date` optional, format `YYYY-MM-DD`) Tj
+0 -14 Td
+(- `location` optional) Tj
+0 -14 Td
+(- `limit` default `10`, min `1`, max `50`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- `date`) Tj
+0 -14 Td
+(- `holiday`) Tj
+0 -14 Td
+(- `location`) Tj
+0 -14 Td
+(- `model_backend`) Tj
+0 -14 Td
+(- `recommendations`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Behavior:) Tj
+0 -14 Td
+(- builds candidates from the configured song catalog) Tj
+0 -14 Td
+(- ranks them through `HybridRecommender`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4.7 Admin holiday routes) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Routes are registered under `/admin/holidays`.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(All admin holiday routes require header:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `x-admin-key`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Default local key:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `admin123`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`GET /admin/holidays`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- list all holiday rules) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`POST /admin/holidays`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- create a holiday rule) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Request body:) Tj
+0 -14 Td
+(- `key`) Tj
+0 -14 Td
+(- `name`) Tj
+0 -14 Td
+(- `eth_month`) Tj
+0 -14 Td
+(- `eth_day`) Tj
+0 -14 Td
+(- `recommendations`) Tj
+0 -14 Td
+(- `is_active`) Tj
+0 -14 Td
+() Tj
+ET
+endstream
+endobj
+20 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 21 0 R >>
+endobj
+21 0 obj
+<< /Length 1522 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(`PUT /admin/holidays/{rule_id}`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- update an existing holiday rule) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Request body:) Tj
+0 -14 Td
+(- partial update fields) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Validation behavior:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- duplicate holiday key returns `409`) Tj
+0 -14 Td
+(- missing rule returns `404`) Tj
+0 -14 Td
+(- invalid admin key returns `401`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4.8 Audio analysis route) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(`POST /analyze-audio`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Purpose:) Tj
+0 -14 Td
+(- upload a music file, extract audio features, and classify Qenet mode) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Accepted file types:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `.mp3`) Tj
+0 -14 Td
+(- `.wav`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Optional form fields:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `artist`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Response:) Tj
+0 -14 Td
+(- `Genre`) Tj
+0 -14 Td
+(- `Qenet Mode`) Tj
+0 -14 Td
+(- `Tempo`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Current operational caveat:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- this route depends on optional audio-analysis dependencies such as `numpy` and `librosa`) Tj
+0 -14 Td
+(- the route now fails gracefully with HTTP `503` if the required audio modules are not) Tj
+0 -14 Td
+(  installed) Tj
+0 -14 Td
+(- this protects overall backend startup from failing) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4.9 Data model) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Main SQLAlchemy entities:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `User`) Tj
+0 -14 Td
+(- `Subscription`) Tj
+ET
+endstream
+endobj
+22 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 23 0 R >>
+endobj
+23 0 obj
+<< /Length 1952 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(- `PremiumContent`) Tj
+0 -14 Td
+(- `PlaylistMarketplace`) Tj
+0 -14 Td
+(- `PlaylistPurchase`) Tj
+0 -14 Td
+(- `Payment`) Tj
+0 -14 Td
+(- `HolidayRule`) Tj
+0 -14 Td
+(- `MusicMetadata`) Tj
+0 -14 Td
+(- `UserPlaybackLog`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Relationship summary:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `User` owns subscriptions, payments, marketplace listings, and purchases) Tj
+0 -14 Td
+(- `PlaylistMarketplace` owns related purchases) Tj
+0 -14 Td
+(- `MusicMetadata` stores extracted audio features and metadata for analyzed files) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4.10 Business logic currently implemented) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Implemented backend rules include:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- user/device creation) Tj
+0 -14 Td
+(- Telegram request detection) Tj
+0 -14 Td
+(- device capability classification based on user agent) Tj
+0 -14 Td
+(- premium playback gating through active subscriptions) Tj
+0 -14 Td
+(- marketplace listing and purchase recording) Tj
+0 -14 Td
+(- payment confirmation and 30-day subscription activation) Tj
+0 -14 Td
+(- Ethiopian date conversion) Tj
+0 -14 Td
+(- holiday-driven playlist recommendations) Tj
+0 -14 Td
+(- hybrid song recommendation ranking) Tj
+0 -14 Td
+(- holiday rule management for admins) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4.11 Backend testing and operation) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Useful backend URLs:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `http://localhost:8000/`) Tj
+0 -14 Td
+(- `http://localhost:8000/health`) Tj
+0 -14 Td
+(- `http://localhost:8000/docs`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Local backend run command:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(    cd c:\\Users\\u\\Music\\music-platform\\backend) Tj
+0 -14 Td
+(    python -m uvicorn main:app --host 0.0.0.0 --port 8000) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Backend checks:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(    cd c:\\Users\\u\\Music\\music-platform\\backend) Tj
+0 -14 Td
+(    python -m pytest) Tj
+0 -14 Td
+(    ruff check .) Tj
+0 -14 Td
+(    black --check .) Tj
+ET
+endstream
+endobj
+24 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 25 0 R >>
+endobj
+25 0 obj
+<< /Length 1766 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(    mypy .) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5. FRONTEND DOCUMENTATION) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5.1 Frontend runtime model) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(The frontend is a web/dev build of the Feishin renderer app. It starts from:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `feishin/src/renderer/main.tsx`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(It creates a React root, wires up React Query persistence through IndexedDB, and renders) Tj
+0 -14 Td
+(  the top-level `App`.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5.2 App provider tree) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(The app in `feishin/src/renderer/app.tsx` wraps the UI with:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `MantineProvider`) Tj
+0 -14 Td
+(- `Notifications`) Tj
+0 -14 Td
+(- `WebAudioContext.Provider`) Tj
+0 -14 Td
+(- `PlayerProvider`) Tj
+0 -14 Td
+(- `AudioPlayers`) Tj
+0 -14 Td
+(- `AppRouter`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(It also lazy-loads a release notes modal.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5.3 Device-aware frontend behavior) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Current frontend behavior includes:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- detection of Telegram Mini App mode) Tj
+0 -14 Td
+(- detection of low-RAM mode) Tj
+0 -14 Td
+(- toggling CSS body classes for Telegram and low-RAM experiences) Tj
+0 -14 Td
+(- calling backend `register-device`) Tj
+0 -14 Td
+(- mapping backend device class to transcoding bitrate) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Current bitrate mapping:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `lite`: `96`) Tj
+0 -14 Td
+(- `high`: `320`) Tj
+0 -14 Td
+(- fallback/default: `192`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(If backend registration fails, the frontend keeps the current bitrate settings.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5.4 Telegram behavior) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(When Telegram Mini App mode is detected, the frontend:) Tj
+0 -14 Td
+() Tj
+ET
+endstream
+endobj
+26 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 27 0 R >>
+endobj
+27 0 obj
+<< /Length 1650 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(- extracts Telegram user id) Tj
+0 -14 Td
+(- stores Telegram state in local storage) Tj
+0 -14 Td
+(- attempts a backend login request through `telegramLogin`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Current note:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- the frontend expects a Telegram login API, but that route is not currently present in) Tj
+0 -14 Td
+(  the backend router set) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5.5 Routing model) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Routing is handled through:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `feishin/src/renderer/router/app-router.tsx`) Tj
+0 -14 Td
+(- `feishin/src/renderer/router/modules/consumer-routes.tsx`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(The router uses:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `MemoryRouter`) Tj
+0 -14 Td
+(- authentication outlet) Tj
+0 -14 Td
+(- titlebar outlet) Tj
+0 -14 Td
+(- app outlet) Tj
+0 -14 Td
+(- modal provider) Tj
+0 -14 Td
+(- router error boundary) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Current consumer routes include:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- home) Tj
+0 -14 Td
+(- search) Tj
+0 -14 Td
+(- library) Tj
+0 -14 Td
+(- now playing) Tj
+0 -14 Td
+(- favorites) Tj
+0 -14 Td
+(- settings) Tj
+0 -14 Td
+(- marketplace) Tj
+0 -14 Td
+(- payments) Tj
+0 -14 Td
+(- profile) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Initial landing behavior:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- Telegram mode defaults to home) Tj
+0 -14 Td
+(- mobile widths default to home) Tj
+0 -14 Td
+(- non-mobile defaults to now playing) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5.6 Current route implementation status) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Some frontend route paths are already present as navigation targets, but not all have) Tj
+0 -14 Td
+(  dedicated screens yet.) Tj
+0 -14 Td
+() Tj
+ET
+endstream
+endobj
+28 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 29 0 R >>
+endobj
+29 0 obj
+<< /Length 1855 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(At the moment:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `home`, `search`, `library`, and `now playing` have dedicated route components) Tj
+0 -14 Td
+(- `favorites`, `settings`, `marketplace`, `payments`, and `profile` currently route to the) Tj
+0 -14 Td
+(  home screen component) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(That means route structure exists, but part of the product surface is still placeholder) Tj
+0 -14 Td
+(  or shared-screen backed.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5.7 Frontend API client) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(The backend integration client lives in:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `feishin/src/renderer/api/client.ts`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Base URL resolution:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `BACKEND_API` env var, if present) Tj
+0 -14 Td
+(- `VITE_BACKEND_API` env var, if present) Tj
+0 -14 Td
+(- otherwise `http://localhost:8000`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Current exported frontend API helpers:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `getUserProfile`) Tj
+0 -14 Td
+(- `checkSubscription`) Tj
+0 -14 Td
+(- `getMarketplacePlaylists`) Tj
+0 -14 Td
+(- `purchasePlaylist`) Tj
+0 -14 Td
+(- `createPayment`) Tj
+0 -14 Td
+(- `getRecommendations`) Tj
+0 -14 Td
+(- `registerDevice`) Tj
+0 -14 Td
+(- `telegramLogin`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5.8 Frontend operational command) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Run the frontend locally with:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(    cd c:\\Users\\u\\Music\\music-platform\\feishin) Tj
+0 -14 Td
+(    npx vite dev --config web.vite.config.ts --host 0.0.0.0 --port 5173) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Open:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `http://localhost:5173`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5.9 Frontend quality checks) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(    cd c:\\Users\\u\\Music\\music-platform\\feishin) Tj
+0 -14 Td
+(    npx eslint src) Tj
+0 -14 Td
+(    npx tsc --noEmit -p tsconfig.node.json --composite false) Tj
+ET
+endstream
+endobj
+30 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 31 0 R >>
+endobj
+31 0 obj
+<< /Length 2296 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(    npx tsc --noEmit -p tsconfig.web.json --composite false) Tj
+0 -14 Td
+(    npx prettier --check .) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(6. CURRENT BACKEND AND FRONTEND INTEGRATION STATUS) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(The frontend and backend are only partially aligned right now.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Confirmed mismatches:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- backend exposes `/payment/create`, while frontend calls `/payments/create`) Tj
+0 -14 Td
+(- backend exposes `/marketplace`, while frontend calls `/marketplace/playlists`) Tj
+0 -14 Td
+(- backend exposes `/marketplace/buy-playlist`, while frontend calls `/marketplace/buy`) Tj
+0 -14 Td
+(- backend exposes `/recommendations/playlists` and `/recommendations/hybrid-feed`, while) Tj
+0 -14 Td
+(  frontend calls `/recommendations`) Tj
+0 -14 Td
+(- frontend references `/telegram/login`, but the backend router set does not currently) Tj
+0 -14 Td
+(  expose that route) Tj
+0 -14 Td
+(- frontend references `/users/{id}/profile`, but the backend router set does not currently) Tj
+0 -14 Td
+(  expose that route) Tj
+0 -14 Td
+(- frontend references `/subscription/check`, but the backend router set does not currently) Tj
+0 -14 Td
+(  expose that route) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(What is aligned today:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- frontend device registration uses `/register-device`) Tj
+0 -14 Td
+(- backend stream-policy logic exists for future frontend use) Tj
+0 -14 Td
+(- frontend bitrate policy behavior is conceptually aligned with backend device classes) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Recommended next integration step:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- either update frontend API calls to match the backend routes) Tj
+0 -14 Td
+(- or add compatibility routes in the backend that match the frontend expectations) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(7. LOCAL RUN, TEST, AND DEBUG GUIDE) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(7.1 Start backend services with Docker) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(    cd c:\\Users\\u\\Music\\music-platform) Tj
+0 -14 Td
+(    docker compose up -d) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(This starts:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `postgres`) Tj
+0 -14 Td
+(- `navidrome`) Tj
+0 -14 Td
+(- `backend`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(7.2 Start frontend) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(    cd c:\\Users\\u\\Music\\music-platform\\feishin) Tj
+ET
+endstream
+endobj
+32 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 33 0 R >>
+endobj
+33 0 obj
+<< /Length 1577 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(    npx vite dev --config web.vite.config.ts --host 0.0.0.0 --port 5173) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(7.3 Check service status) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(    cd c:\\Users\\u\\Music\\music-platform) Tj
+0 -14 Td
+(    docker compose ps) Tj
+0 -14 Td
+(    docker compose logs --tail=200 backend) Tj
+0 -14 Td
+(    docker compose logs --tail=200 navidrome) Tj
+0 -14 Td
+(    docker compose logs --tail=200 postgres) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(7.4 Backend smoke tests) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Browser:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `http://localhost:8000/`) Tj
+0 -14 Td
+(- `http://localhost:8000/health`) Tj
+0 -14 Td
+(- `http://localhost:8000/docs`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(PowerShell:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(    curl http://localhost:8000/health) Tj
+0 -14 Td
+(    curl http://localhost:8000/) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(7.5 Frontend smoke tests) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- confirm Vite starts without errors) Tj
+0 -14 Td
+(- open `http://localhost:5173`) Tj
+0 -14 Td
+(- inspect browser console and network tabs) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(7.6 Port checklist) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Expected ports:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `5173`: frontend) Tj
+0 -14 Td
+(- `8000`: backend) Tj
+0 -14 Td
+(- `4533`: Navidrome) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Port check:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(    netstat -ano | Select-String ':5173|:8000|:4533') Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(7.7 Stop services) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Frontend:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- press `Ctrl+C` in the frontend terminal) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Docker:) Tj
+ET
+endstream
+endobj
+34 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 35 0 R >>
+endobj
+35 0 obj
+<< /Length 2236 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+() Tj
+0 -14 Td
+(    cd c:\\Users\\u\\Music\\music-platform) Tj
+0 -14 Td
+(    docker compose down) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(8. CURRENT LIMITATIONS) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Known limitations in the current state:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- frontend and backend API contracts are not fully synchronized) Tj
+0 -14 Td
+(- some frontend routes still reuse the home screen as placeholders) Tj
+0 -14 Td
+(- Telegram login flow is not fully backed by a server route) Tj
+0 -14 Td
+(- profile and subscription-check APIs referenced by the frontend are missing in the) Tj
+0 -14 Td
+(  backend) Tj
+0 -14 Td
+(- audio-analysis requires optional dependencies that are not guaranteed to be installed) Tj
+0 -14 Td
+(  locally) Tj
+0 -14 Td
+(- Docker availability depends on the local Docker engine being active) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(9. RECOMMENDED NEXT WORK) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Recommended near-term engineering tasks:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- align frontend API client paths with backend routes) Tj
+0 -14 Td
+(- add missing backend endpoints expected by the frontend, or refactor the frontend to use) Tj
+0 -14 Td
+(  existing routes) Tj
+0 -14 Td
+(- build real marketplace, profile, payment, and settings screens instead of placeholder) Tj
+0 -14 Td
+(  routes) Tj
+0 -14 Td
+(- define end-to-end auth and Telegram user handling) Tj
+0 -14 Td
+(- formalize DB migrations instead of relying only on SQLAlchemy auto-create) Tj
+0 -14 Td
+(- decide whether audio-analysis is optional or required for baseline local development) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(10. QUICK REFERENCE) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Backend only:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(    cd c:\\Users\\u\\Music\\music-platform\\backend) Tj
+0 -14 Td
+(    python -m uvicorn main:app --host 0.0.0.0 --port 8000) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Frontend only:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(    cd c:\\Users\\u\\Music\\music-platform\\feishin) Tj
+0 -14 Td
+(    npx vite dev --config web.vite.config.ts --host 0.0.0.0 --port 5173) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Docker stack:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(    cd c:\\Users\\u\\Music\\music-platform) Tj
+0 -14 Td
+(    docker compose up -d) Tj
+0 -14 Td
+(    docker compose ps) Tj
+0 -14 Td
+(    docker compose down) Tj
+ET
+endstream
+endobj
+36 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 37 0 R >>
+endobj
+37 0 obj
+<< /Length 31 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+() Tj
+ET
+endstream
+endobj
+xref
+0 38
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000226 00000 n 
+0000000296 00000 n 
+0000000422 00000 n 
+0000002840 00000 n 
+0000002966 00000 n 
+0000004976 00000 n 
+0000005102 00000 n 
+0000006736 00000 n 
+0000006864 00000 n 
+0000008439 00000 n 
+0000008567 00000 n 
+0000010134 00000 n 
+0000010262 00000 n 
+0000011767 00000 n 
+0000011895 00000 n 
+0000013456 00000 n 
+0000013584 00000 n 
+0000015091 00000 n 
+0000015219 00000 n 
+0000016794 00000 n 
+0000016922 00000 n 
+0000018927 00000 n 
+0000019055 00000 n 
+0000020874 00000 n 
+0000021002 00000 n 
+0000022705 00000 n 
+0000022833 00000 n 
+0000024741 00000 n 
+0000024869 00000 n 
+0000027218 00000 n 
+0000027346 00000 n 
+0000028976 00000 n 
+0000029104 00000 n 
+0000031393 00000 n 
+0000031521 00000 n 
+trailer
+<< /Size 38 /Root 1 0 R >>
+startxref
+31603
+%%EOF

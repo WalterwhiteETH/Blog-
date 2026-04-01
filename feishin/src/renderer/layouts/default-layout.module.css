@@ -1,0 +1,36 @@
+.layout {
+    --spotify-accent: #1ed760;
+    --spotify-accent-strong: #1fdf64;
+    --spotify-shell: #070808;
+    --spotify-panel: #121313;
+    --spotify-panel-elevated: #181a1a;
+    --spotify-panel-hover: #212424;
+    --spotify-hairline: rgb(255 255 255 / 8%);
+    --spotify-shadow: 0 24px 60px rgb(0 0 0 / 35%);
+    display: grid;
+    grid-template-areas:
+        'window-bar'
+        'main-content'
+        'player';
+    grid-template-rows: 0 calc(100vh - 112px) 96px;
+    grid-template-rows: 0 calc(100dvh - 112px) 96px;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    height: 100%;
+    padding: 8px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top left, rgb(30 215 96 / 14%), transparent 28%),
+        radial-gradient(circle at top right, rgb(255 255 255 / 6%), transparent 22%),
+        linear-gradient(180deg, #1a1d1c 0%, #0a0b0b 18%, #050505 100%);
+}
+
+.windows {
+    grid-template-rows: 30px calc(100vh - 142px) 96px;
+    grid-template-rows: 30px calc(100dvh - 142px) 96px;
+}
+
+.macos {
+    grid-template-rows: 30px calc(100vh - 142px) 96px;
+    grid-template-rows: 30px calc(100dvh - 142px) 96px;
+}

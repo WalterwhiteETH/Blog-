@@ -1,0 +1,10 @@
+coverage
+frontend-dev.err.log
+frontend-dev.log
+frontend-web.log
+out
+dist
+pnpm-lock.yaml
+LICENSE.md
+tsconfig.json
+tsconfig.*.json

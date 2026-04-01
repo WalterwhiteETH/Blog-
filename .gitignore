@@ -1,0 +1,38 @@
+# Local runtime data
+postgres-data/
+navidrome-data/
+music/
+feishin/.git_embedded_backup/
+
+# Python caches and local runtime files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+ENV/
+*.log
+*.sqlite3
+
+# Project local DB/log artifacts
+backend/music_platform.db
+backend/backend-dev.log
+backend/backend-dev.err.log
+backend/backend-local.out.log
+backend/backend-local.err.log
+
+# Node/frontend caches and build output
+node_modules/
+dist/
+build/
+.vite/
+coverage/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

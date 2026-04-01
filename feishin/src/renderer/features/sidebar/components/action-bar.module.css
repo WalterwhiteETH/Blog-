@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    align-items: center;
+    height: 72px;
+    padding-top: 0.25rem;
+    -webkit-app-region: drag;
+
+    :global(.mantine-TextInput-input) {
+        height: 46px;
+        background: rgb(255 255 255 / 5%);
+        border: 1px solid rgb(255 255 255 / 7%);
+        border-radius: 999px;
+        color: var(--theme-colors-foreground);
+    }
+
+    :global(.mantine-TextInput-section) {
+        color: var(--theme-colors-foreground-muted);
+    }
+
+    :global(button) {
+        border-radius: 999px;
+    }
+
+    input {
+        -webkit-app-region: no-drag;
+    }
+}

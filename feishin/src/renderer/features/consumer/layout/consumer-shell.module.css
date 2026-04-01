@@ -1,0 +1,286 @@
+.shell {
+    --consumer-accent: #f4c542;
+    --consumer-accent-strong: #ffe27a;
+    --consumer-accent-soft: rgb(244 197 66 / 14%);
+    --consumer-accent-soft-strong: rgb(244 197 66 / 28%);
+    --consumer-accent-glow: rgb(244 197 66 / 12%);
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    min-height: 100vh;
+    padding: 20px 20px 104px;
+    color: #fff;
+    background:
+        radial-gradient(circle at top, var(--consumer-accent-glow), transparent 24%),
+        linear-gradient(180deg, #111315 0%, #0e0e10 35%, #09090a 100%);
+}
+
+.sidebar {
+    position: sticky;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-self: start;
+    height: calc(100vh - 40px);
+    padding: 24px 18px;
+    background: rgb(24 24 24 / 96%);
+    border: 1px solid rgb(255 255 255 / 7%);
+    border-radius: 24px;
+}
+
+.brand {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.brandMark {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    font-size: 1.35rem;
+    color: #041109;
+    background: var(--consumer-accent);
+    border-radius: 16px;
+}
+
+.brandTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.brandSubtitle {
+    color: rgb(255 255 255 / 62%);
+    font-size: 0.9rem;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.navItem,
+.bottomNavItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 16px;
+    color: rgb(255 255 255 / 68%);
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    transition:
+        transform 0.18s ease,
+        background-color 0.18s ease,
+        color 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.navIcon,
+.bottomNavIcon,
+.volumeIcon {
+    flex-shrink: 0;
+    font-size: 1.2rem;
+}
+
+.navItem:hover,
+.bottomNavItem:hover {
+    color: #fff;
+    background: rgb(255 255 255 / 4%);
+}
+
+.navItemActive,
+.bottomNavItemActive {
+    color: #fff;
+    background: var(--consumer-accent-soft);
+    border-color: var(--consumer-accent-soft-strong);
+}
+
+.content {
+    min-width: 0;
+    padding-left: 20px;
+}
+
+.contentNowPlaying {
+    padding-left: 0;
+}
+
+.playerDock {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    left: 280px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) auto auto;
+    gap: 20px;
+    align-items: center;
+    padding: 18px 22px;
+    overflow: hidden;
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+    background: rgb(24 24 24 / 96%);
+    border: 1px solid rgb(255 255 255 / 8%);
+    border-radius: 22px;
+    box-shadow: 0 24px 60px rgb(0 0 0 / 35%);
+}
+
+.playerDockIdle {
+    grid-template-columns: 1fr;
+    cursor: default;
+}
+
+.playerDockProgress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        var(--consumer-accent),
+        var(--consumer-accent-strong)
+    );
+}
+
+.playerDockMedia {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    min-width: 0;
+}
+
+.playerDockArt {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 58px;
+    height: 58px;
+    overflow: hidden;
+    font-size: 1.2rem;
+    background: rgb(255 255 255 / 6%);
+    border-radius: 16px;
+}
+
+.playerDockArt img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.playerDockText {
+    min-width: 0;
+}
+
+.playerDockLabel,
+.playerDockTitle {
+    overflow: hidden;
+    font-size: 0.98rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.playerDockMeta {
+    overflow: hidden;
+    margin-top: 4px;
+    color: rgb(255 255 255 / 62%);
+    font-size: 0.88rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.playerDockControls,
+.playerDockActions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.playerDockControls button,
+.playerDockActions button {
+    min-height: 42px;
+    min-width: 42px;
+    padding: 0 14px;
+    color: #fff;
+    background: rgb(255 255 255 / 4%);
+    border: 1px solid rgb(255 255 255 / 7%);
+    border-radius: 999px;
+}
+
+.playerDockPrimary {
+    color: #041109 !important;
+    font-weight: 700;
+    background: var(--consumer-accent) !important;
+    border-color: transparent !important;
+}
+
+.playerDockActions input {
+    width: 120px;
+    accent-color: var(--consumer-accent);
+}
+
+.playerDockQueue {
+    white-space: nowrap;
+}
+
+.bottomNav {
+    display: none;
+}
+
+@media (max-width: 960px) {
+    .shell {
+        grid-template-columns: 1fr;
+        padding: 16px 16px 170px;
+    }
+
+    .shellNowPlaying {
+        padding-bottom: 20px;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .content {
+        padding-left: 0;
+    }
+
+    .playerDock {
+        right: 16px;
+        bottom: 82px;
+        left: 16px;
+        grid-template-columns: 1fr;
+    }
+
+    .playerDockActions {
+        justify-content: space-between;
+    }
+
+    .bottomNav {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        left: 16px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 10px;
+        background: rgb(24 24 24 / 96%);
+        border: 1px solid rgb(255 255 255 / 8%);
+        border-radius: 20px;
+        box-shadow: 0 20px 48px rgb(0 0 0 / 35%);
+    }
+
+    .bottomNavItem {
+        flex-direction: column;
+        gap: 6px;
+        min-height: 56px;
+        padding: 6px 10px;
+        font-size: 0.78rem;
+    }
+}

@@ -1,0 +1,587 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 6 /Kids [4 0 R 6 0 R 8 0 R 10 0 R 12 0 R 14 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 1743 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(MUSIC PLATFORM OPERATION AND DEBUG GUIDE) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(1. WHAT THIS PROJECT RUNS) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(This workspace has two main things you will use during development:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(1. Backend services with Docker:) Tj
+0 -14 Td
+(   - Postgres database) Tj
+0 -14 Td
+(   - Navidrome music server) Tj
+0 -14 Td
+(   - FastAPI backend on port `8000`) Tj
+0 -14 Td
+(2. Frontend web server with Vite:) Tj
+0 -14 Td
+(   - Feishin web UI on port `5173`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Main local URLs:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- Frontend: `http://localhost:5173`) Tj
+0 -14 Td
+(- Backend health check: `http://localhost:8000/health`) Tj
+0 -14 Td
+(- Navidrome: `http://localhost:4533`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(2. PROJECT FOLDERS YOU SHOULD KNOW) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `backend/app`: main FastAPI application code) Tj
+0 -14 Td
+(- `backend/tests`: backend tests) Tj
+0 -14 Td
+(- `feishin/src/renderer`: frontend UI code) Tj
+0 -14 Td
+(- `docker-compose.yml`: backend service definitions) Tj
+0 -14 Td
+(- `music`: local music library mounted into Navidrome) Tj
+0 -14 Td
+(- `navidrome-data`: Navidrome data) Tj
+0 -14 Td
+(- `postgres-data`: Postgres data) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(3. START EVERYTHING) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Open PowerShell in:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(cd c:\\Users\\u\\Music\\music-platform) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Step 1: Start Docker services) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(docker compose up -d) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(This starts:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `postgres`) Tj
+0 -14 Td
+(- `navidrome`) Tj
+0 -14 Td
+(- `backend`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Step 2: Check Docker services) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(docker compose ps) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 1703 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+() Tj
+0 -14 Td
+(You want to see the containers running, especially:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `music-postgres`) Tj
+0 -14 Td
+(- `navidrome`) Tj
+0 -14 Td
+(- `music-backend`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Step 3: Start the frontend dev server) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Open a second PowerShell window:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(cd c:\\Users\\u\\Music\\music-platform\\feishin) Tj
+0 -14 Td
+(npx vite dev --config web.vite.config.ts --host 0.0.0.0 --port 5173) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Step 4: Open the app) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- Frontend: `http://localhost:5173`) Tj
+0 -14 Td
+(- Backend API: `http://localhost:8000`) Tj
+0 -14 Td
+(- Backend health: `http://localhost:8000/health`) Tj
+0 -14 Td
+(- Navidrome: `http://localhost:4533`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(4. STOP EVERYTHING) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Stop the frontend by pressing `Ctrl+C` in the frontend terminal.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Stop Docker services:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(cd c:\\Users\\u\\Music\\music-platform) Tj
+0 -14 Td
+(docker compose down) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(5. DAILY WORKFLOW) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(1. Run `docker compose up -d`) Tj
+0 -14 Td
+(2. Run the frontend Vite command in `feishin`) Tj
+0 -14 Td
+(3. Open `http://localhost:5173`) Tj
+0 -14 Td
+(4. Make code changes) Tj
+0 -14 Td
+(5. Refresh the browser after frontend changes) Tj
+0 -14 Td
+(6. Rebuild or restart services only when needed) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(6. HOW TO DEBUG THE BACKEND) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Quick backend checks) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Run:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(curl http://localhost:8000/health) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Expected response:) Tj
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 1748 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+() Tj
+0 -14 Td
+({"status":"ok"}) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### See backend logs) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(cd c:\\Users\\u\\Music\\music-platform) Tj
+0 -14 Td
+(docker compose logs --tail=200 backend) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Follow backend logs live) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(docker compose logs -f backend) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Common backend debug steps) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(1. Check whether backend container is running with `docker compose ps`) Tj
+0 -14 Td
+(2. Check `/health`) Tj
+0 -14 Td
+(3. Read backend logs) Tj
+0 -14 Td
+(4. Confirm Postgres is healthy) Tj
+0 -14 Td
+(5. Restart backend if needed:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(docker compose restart backend) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Run backend tests) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(cd c:\\Users\\u\\Music\\music-platform\\backend) Tj
+0 -14 Td
+(python -m pytest) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Run backend static checks) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(cd c:\\Users\\u\\Music\\music-platform\\backend) Tj
+0 -14 Td
+(ruff check .) Tj
+0 -14 Td
+(black --check .) Tj
+0 -14 Td
+(mypy .) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(7. HOW TO DEBUG THE FRONTEND) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Start the web UI) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(cd c:\\Users\\u\\Music\\music-platform\\feishin) Tj
+0 -14 Td
+(npx vite dev --config web.vite.config.ts --host 0.0.0.0 --port 5173) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Common frontend debug steps) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(1. Watch the terminal where Vite is running) Tj
+0 -14 Td
+(2. Open browser developer tools) Tj
+0 -14 Td
+(3. Check the Network tab for failed API calls) Tj
+0 -14 Td
+(4. Check the Console tab for React or JavaScript errors) Tj
+0 -14 Td
+(5. Confirm requests are going to the correct backend URL) Tj
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 1606 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+() Tj
+0 -14 Td
+(### Run frontend checks) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(cd c:\\Users\\u\\Music\\music-platform\\feishin) Tj
+0 -14 Td
+(npx eslint src) Tj
+0 -14 Td
+(npx tsc --noEmit -p tsconfig.node.json --composite false) Tj
+0 -14 Td
+(npx tsc --noEmit -p tsconfig.web.json --composite false) Tj
+0 -14 Td
+(npx prettier --check .) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(8. HOW TO DEBUG DOCKER SERVICES) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Check all service status) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(cd c:\\Users\\u\\Music\\music-platform) Tj
+0 -14 Td
+(docker compose ps) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### See logs for all services) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(docker compose logs --tail=200) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### See logs for Navidrome) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(docker compose logs --tail=200 navidrome) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### See logs for Postgres) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(docker compose logs --tail=200 postgres) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Restart a single service) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(docker compose restart backend) Tj
+0 -14 Td
+(docker compose restart navidrome) Tj
+0 -14 Td
+(docker compose restart postgres) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(9. PORT CHECKLIST) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(If something does not open, check these ports:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- `5173`: frontend Vite server) Tj
+0 -14 Td
+(- `8000`: FastAPI backend) Tj
+0 -14 Td
+(- `4533`: Navidrome) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Check listening ports:) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(netstat -ano | Select-String ':5173|:8000|:4533') Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(10. IF SOMETHING FAILS) Tj
+0 -14 Td
+() Tj
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 1831 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(### Frontend does not open) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- Confirm Vite is running) Tj
+0 -14 Td
+(- Confirm port `5173` is not blocked) Tj
+0 -14 Td
+(- Read the frontend terminal errors) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Backend does not respond) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- Check `docker compose ps`) Tj
+0 -14 Td
+(- Check `docker compose logs --tail=200 backend`) Tj
+0 -14 Td
+(- Check `http://localhost:8000/health`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Database problems) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- Check Postgres logs) Tj
+0 -14 Td
+(- Confirm the `postgres` container is healthy) Tj
+0 -14 Td
+(- Restart backend after Postgres becomes healthy) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(### Navidrome problems) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(- Check `docker compose logs --tail=200 navidrome`) Tj
+0 -14 Td
+(- Confirm `http://localhost:4533` opens) Tj
+0 -14 Td
+(- Confirm music files exist under `music`) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(11. MOST USEFUL COMMANDS) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(cd c:\\Users\\u\\Music\\music-platform) Tj
+0 -14 Td
+(docker compose up -d) Tj
+0 -14 Td
+(docker compose ps) Tj
+0 -14 Td
+(docker compose logs --tail=200 backend) Tj
+0 -14 Td
+(docker compose logs --tail=200 navidrome) Tj
+0 -14 Td
+(docker compose down) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(cd c:\\Users\\u\\Music\\music-platform\\feishin) Tj
+0 -14 Td
+(npx vite dev --config web.vite.config.ts --host 0.0.0.0 --port 5173) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(cd c:\\Users\\u\\Music\\music-platform\\backend) Tj
+0 -14 Td
+(python -m pytest) Tj
+0 -14 Td
+(ruff check .) Tj
+0 -14 Td
+(black --check .) Tj
+0 -14 Td
+(mypy .) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(12. RECOMMENDED ORDER WHEN DEBUGGING) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(1. Check whether the service is running) Tj
+0 -14 Td
+(2. Check the health endpoint or UI URL) Tj
+0 -14 Td
+(3. Read logs) Tj
+0 -14 Td
+(4. Check ports) Tj
+ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 165 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+(5. Run tests or type checks) Tj
+0 -14 Td
+(6. Restart only the broken service) Tj
+0 -14 Td
+(7. Re-test after each change) Tj
+0 -14 Td
+() Tj
+ET
+endstream
+endobj
+xref
+0 16
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000148 00000 n 
+0000000218 00000 n 
+0000000344 00000 n 
+0000002139 00000 n 
+0000002265 00000 n 
+0000004020 00000 n 
+0000004146 00000 n 
+0000005946 00000 n 
+0000006074 00000 n 
+0000007733 00000 n 
+0000007861 00000 n 
+0000009745 00000 n 
+0000009873 00000 n 
+trailer
+<< /Size 16 /Root 1 0 R >>
+startxref
+10090
+%%EOF

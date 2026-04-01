@@ -1,0 +1,98 @@
+body.telegram-lite {
+    --theme-root-font-size: 15px;
+    --theme-card-default-radius: 14px;
+    --tg-surface: color-mix(in srgb, var(--theme-colors-surface) 88%, #0f172a 12%);
+    --tg-accent: #18a86b;
+    --tg-accent-strong: #0e8e58;
+    background:
+        radial-gradient(circle at 10% 10%, rgb(36 52 88 / 30%), transparent 35%),
+        radial-gradient(circle at 90% 20%, rgb(24 92 68 / 22%), transparent 35%),
+        var(--theme-colors-background);
+}
+
+body.telegram-lite #main-content {
+    grid-template-areas: '.';
+    grid-template-columns: 1fr;
+}
+
+body.telegram-lite #sidebar,
+body.telegram-lite #left-sidebar {
+    display: none;
+}
+
+body.telegram-lite [id='global-search-container'] {
+    margin-bottom: 0.25rem;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    padding-top: 0.4rem;
+    background: color-mix(in srgb, var(--theme-colors-background) 88%, transparent);
+    backdrop-filter: blur(4px);
+}
+
+body.telegram-lite * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.12s !important;
+}
+
+body.telegram-lite [class*='right-sidebar'],
+body.telegram-lite [class*='full-screen-visualizer'] {
+    display: none !important;
+}
+
+body.telegram-lite [class*='main-content-body-scroll'] {
+    padding-bottom: 6rem;
+}
+
+body.low-ram-mode img {
+    image-rendering: auto;
+}
+
+body.low-ram-mode [class*='background-noise'],
+body.low-ram-mode [class*='visualizer'] {
+    display: none !important;
+}
+
+body.telegram-lite button {
+    border-radius: 12px;
+    min-height: 42px;
+}
+
+body.telegram-lite input {
+    min-height: 42px;
+    border-radius: 12px;
+}
+
+body.telegram-lite .telegram-quick-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+}
+
+body.telegram-lite .telegram-quick-action-btn {
+    min-height: 48px;
+    border: 1px solid color-mix(in srgb, var(--theme-colors-border) 70%, transparent);
+    background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--theme-colors-surface) 82%, white 18%),
+        color-mix(in srgb, var(--theme-colors-surface) 95%, black 5%)
+    );
+    color: var(--theme-colors-text);
+    border-radius: 14px;
+    font-weight: 600;
+}
+
+body.telegram-lite .telegram-panel {
+    background: var(--tg-surface);
+    border: 1px solid color-mix(in srgb, var(--theme-colors-border) 60%, transparent);
+    border-radius: 14px;
+    padding: 0.8rem;
+}
+
+body.telegram-lite .telegram-primary-btn {
+    background: linear-gradient(180deg, var(--tg-accent), var(--tg-accent-strong));
+    border: none;
+    color: white;
+    font-weight: 700;
+}

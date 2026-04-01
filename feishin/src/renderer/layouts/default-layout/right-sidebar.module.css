@@ -1,0 +1,23 @@
+.right-sidebar-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    grid-area: right-sidebar;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    background:
+        linear-gradient(180deg, rgb(255 255 255 / 4%), rgb(255 255 255 / 0%)),
+        var(--spotify-panel);
+    border: 1px solid var(--spotify-hairline);
+    border-radius: 24px;
+    box-shadow: var(--spotify-shadow);
+
+    .current-song-cell:not(.current-playlist-song-cell) svg {
+        display: none;
+    }
+}
+
+.queue-drawer {
+    border-radius: var(--theme-radius-lg);
+}

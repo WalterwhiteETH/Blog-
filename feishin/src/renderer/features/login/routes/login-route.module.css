@@ -1,0 +1,49 @@
+.page {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 24px;
+    background:
+        radial-gradient(circle at top, rgb(244 197 66 / 18%), transparent 24%),
+        linear-gradient(180deg, #111315 0%, #0e0e10 40%, #09090a 100%);
+}
+
+.panel {
+    width: min(420px, 100%);
+    padding: 32px;
+    background: rgb(24 24 24 / 96%);
+    border: 1px solid rgb(255 255 255 / 7%);
+    border-radius: 28px;
+    box-shadow: 0 24px 60px rgb(0 0 0 / 35%);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 84px;
+    min-height: 38px;
+    margin-bottom: 18px;
+    color: #041109;
+    font-weight: 800;
+    background: #f4c542;
+    border-radius: 999px;
+}
+
+.panel h1 {
+    margin: 0;
+    color: #fff;
+    font-size: 2rem;
+}
+
+.panel p {
+    margin: 12px 0 0;
+    color: rgb(255 255 255 / 65%);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 24px;
+}

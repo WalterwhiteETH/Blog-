@@ -1,0 +1,66 @@
+.motion-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.player-button {
+    all: unset;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.45rem;
+    overflow: visible;
+    border-radius: 999px;
+
+    button {
+        display: flex;
+    }
+
+    &:focus-visible {
+        outline: 1px var(--theme-colors-primary-filled) solid;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+    }
+
+    svg {
+        display: flex;
+    }
+}
+
+.player-button.active {
+    background: rgb(30 215 96 / 10%);
+
+    svg {
+        fill: var(--spotify-accent);
+    }
+}
+
+.main {
+    background: var(--spotify-accent) !important;
+    border-radius: 50%;
+    box-shadow: 0 8px 18px rgb(30 215 96 / 25%);
+
+    svg {
+        display: flex;
+        color: #08110b;
+        fill: #08110b;
+    }
+}
+
+.secondary {
+    color: #fff;
+
+    svg {
+        color: #fff;
+    }
+}
+
+.tertiary {
+    svg {
+        display: flex;
+    }
+}

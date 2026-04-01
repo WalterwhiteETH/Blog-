@@ -1,0 +1,52 @@
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: music-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: musicuser
+      POSTGRES_PASSWORD: musicpass
+      POSTGRES_DB: musicdb
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U musicuser -d musicdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - music-net
+
+  navidrome:
+    image: deluan/navidrome:latest
+    container_name: navidrome
+    restart: always
+    ports:
+      - "4533:4533"
+    environment:
+      ND_DEVAUTOCREATEADMINPASSWORD: MusicApp!2026
+      ND_SCANINTERVAL: 1h
+      ND_LOGLEVEL: info
+    volumes:
+      - ./music:/music
+      - ./navidrome-data:/data
+    networks:
+      - music-net
+
+  backend:
+    build: ./backend
+    container_name: music-backend
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://musicuser:musicpass@postgres:5432/musicdb
+    ports:
+      - "8000:8000"
+    networks:
+      - music-net
+
+networks:
+  music-net:
