@@ -8,7 +8,7 @@ across multiple applications without coupling to specific business domains.
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
-from fastapi import APIRouter, Depends, HTTPException, Header, Query, status
+from fastapi import APIRouter, Depends, HTTPException, Header, Query, status, Request
 from sqlalchemy.orm import Session
 
 from apps.payments.services.payment_service import (
@@ -54,9 +54,17 @@ router = APIRouter(prefix="/api/v1/payments", tags=["payments"])
 
 
 # Dependency injection
-def get_payment_service(db: Session = Depends(get_db)) -> PaymentService:
-    """Get payment service instance."""
-    return PaymentService(db)
+def get_payment_service(
+    db: Session = Depends(get_db),
+    request: Request = None
+) -> PaymentService:
+    """Get payment service instance with providers from app state."""
+    # Try to get providers from app state
+    providers = None
+    if request and hasattr(request, 'app') and hasattr(request.app, 'state'):
+        providers = getattr(request.app.state, 'payment_providers', None)
+    
+    return PaymentService(db, providers)
 
 
 def get_webhook_service(db: Session = Depends(get_db)) -> WebhookService:

@@ -5,7 +5,7 @@ This provider handles manual payment verification processes
 for bank transfers and other offline payment methods.
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 from typing import Any, Dict
 
@@ -41,6 +41,7 @@ class ManualBankProvider(BasePaymentProvider):
         self.payment_deadline_hours = config.get('payment_deadline_hours', 24)
         self.requires_receipt_upload = config.get('requires_receipt_upload', True)
         self.auto_approve_threshold = config.get('auto_approve_threshold', 0)  # Amount below which auto-approval might be allowed
+        self.currency = config.get('currency', 'ETB')
     
     def validate_config(self) -> None:
         """Validate manual bank configuration."""
@@ -76,7 +77,7 @@ class ManualBankProvider(BasePaymentProvider):
             'currency': request.payment_intent.currency,
             'reference': reference,
             'description': request.payment_intent.description or 'Payment',
-            'payment_deadline': (datetime.utcnow() + timedelta(hours=self.payment_deadline_hours)).isoformat(),
+            'payment_deadline': (datetime.now(timezone.utc) + timedelta(hours=self.payment_deadline_hours)).isoformat(),
             'requires_receipt_upload': self.requires_receipt_upload,
             'verification_method': 'manual_admin_approval',
         }
@@ -181,7 +182,7 @@ class ManualBankProvider(BasePaymentProvider):
             'provider_transaction_id': reference,
             'status': mapped_status,
             'amount': None,  # Would be extracted from original payment
-            'processed_at': datetime.utcnow().isoformat(),
+            'processed_at': datetime.now(timezone.utc).isoformat(),
             'webhook_data': payload,
             'verification_details': {
                 'verified_by': verified_by,
@@ -211,7 +212,7 @@ class ManualBankProvider(BasePaymentProvider):
                 'customer_action': 'No action required - refund will be processed automatically',
                 'tracking_reference': refund_reference,
             },
-            'estimated_completion': (datetime.utcnow() + timedelta(days=3)).isoformat(),
+            'estimated_completion': (datetime.now(timezone.utc) + timedelta(days=3)).isoformat(),
         }
     
     def verify_webhook_signature(
@@ -243,7 +244,7 @@ class ManualBankProvider(BasePaymentProvider):
         return {
             'reference': provider_transaction_id,
             'status': 'pending_manual_verification',
-            'checked_at': datetime.utcnow().isoformat(),
+            'checked_at': datetime.now(timezone.utc).isoformat(),
             'verification_method': 'manual_admin_approval',
         }
     
@@ -253,7 +254,7 @@ class ManualBankProvider(BasePaymentProvider):
         prefix: str = 'BNK'
     ) -> str:
         """Generate unique bank transfer reference."""
-        timestamp = int(datetime.utcnow().timestamp())
+        timestamp = int(datetime.now(timezone.utc).timestamp())
         return f"{prefix}{payment_intent_id}{timestamp}"
     
     def get_provider_name(self) -> str:

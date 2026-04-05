@@ -61,9 +61,9 @@ class PaymentService:
     Core payment service with security, idempotency, and proper error handling.
     """
     
-    def __init__(self, db: Session):
+    def __init__(self, db: Session, providers: Optional[Dict[str, BasePaymentProvider]] = None):
         self.db = db
-        self._providers: Dict[str, BasePaymentProvider] = {}
+        self._providers: Dict[str, BasePaymentProvider] = providers or {}
     
     def register_provider(self, provider: BasePaymentProvider) -> None:
         """Register a payment provider."""

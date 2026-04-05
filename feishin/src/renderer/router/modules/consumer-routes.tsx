@@ -21,14 +21,24 @@ const MarketplacePage = lazy(() => import('/@/renderer/pages/Marketplace'));
 const PaymentsPage = lazy(() => import('/@/renderer/pages/Payments'));
 const ProfilePage = lazy(() => import('/@/renderer/pages/Profile'));
 
-// New refactored pages
+// Aligned pages (current working implementation)
+const AlignedMarketplacePage = lazy(() => import('/@/renderer/pages/AlignedMarketplace'));
+const AlignedPaymentsPage = lazy(() => import('/@/renderer/pages/AlignedPayments'));
+
+// Future refactored pages (not yet ready)
 const RefactoredMarketplacePage = lazy(() => import('/@/renderer/pages/RefactoredMarketplace'));
 const RefactoredPaymentsPage = lazy(() => import('/@/renderer/pages/RefactoredPayments'));
 
-// Feature flag to switch between old and new implementations
-const useRefactoredPages = () => {
-    return import.meta.env?.VITE_ENABLE_NEW_MUSIC_DOMAIN === 'true' || 
-           import.meta.env?.VITE_ENABLE_NEW_PAYMENT_DOMAIN === 'true';
+// Feature flag to switch between implementations
+const getImplementationType = () => {
+    const enableRefactored = import.meta.env?.VITE_ENABLE_NEW_MUSIC_DOMAIN === 'true';
+    const enablePayment = import.meta.env?.VITE_ENABLE_NEW_PAYMENT_DOMAIN === 'true';
+    
+    if (enableRefactored && enablePayment) {
+        return 'refactored';  // Future implementation
+    } else {
+        return 'aligned';    // Current working implementation
+    }
 };
 
 const MOBILE_BREAKPOINT = 768;
@@ -58,17 +68,30 @@ export const consumerRoutes = (
         <Route element={<HomeRoute />} path={AppRoute.FAVORITES} />
         <Route element={<HomeRoute />} path={AppRoute.SETTINGS} />
         
-        {/* Conditional rendering based on feature flag */}
+        {/* Implementation-based routing */}
         <Route 
-            element={useRefactoredPages() ? <RefactoredMarketplacePage /> : <MarketplacePage />} 
+            element={() => {
+                const impl = getImplementationType();
+                if (impl === 'refactored') {
+                    return <RefactoredMarketplacePage />;
+                } else {
+                    return <AlignedMarketplacePage />;
+                }
+            }} 
             path={AppRoute.MARKETPLACE} 
         />
         <Route 
-            element={useRefactoredPages() ? <RefactoredPaymentsPage /> : <PaymentsPage />} 
+            element={() => {
+                const impl = getImplementationType();
+                if (impl === 'refactored') {
+                    return <RefactoredPaymentsPage />;
+                } else {
+                    return <AlignedPaymentsPage />;
+                }
+            }} 
             path={AppRoute.PAYMENTS} 
         />
         
         <Route element={<ProfilePage />} path={AppRoute.PROFILE} />
-        <Route element={<HomeRoute />} path="*" />
     </Route>
 );
